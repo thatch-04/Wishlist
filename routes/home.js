@@ -52,6 +52,59 @@ router.get("/auth/signup", (req, res) => {
     res.render("auth/signup")
 })
 
+router.post("/auth/signup", async (req, res) => {
+    try {
+        //generate our salt
+        const salt = await bcrypt.genSalt(10)
+        //hash the password
+        req.body.password = await bcrypt.hash(req.body.password, salt)
+        console.log(req.body)
+        //create the new user
+        await User.create(req.body)
+        //res.redirect to login
+        res.redirect("/auth/login")
+    } catch(error){
+        res.json(error)
+    }
+})
+
+//Login Routes
+router.get("/auth/login", (req, res) => {
+    res.render("auth/login")
+})
+
+router.post("/auth/login", async (req, res) => {
+    try{
+        //get the user
+        const user = await User.findOne({username: req.body.username})
+        if (user){
+            //check if the passwords match
+            const result = await bcrypt.compare(req.body.password, user.password)
+            console.log(result)
+            if (result){
+                req.session.userId = user._id
+                res.redirect("/wishlist")
+            } else {
+                res.json({error: "User Doesn't Exist"})
+            }
+        } else {
+            res.json({error: "User Doesn't Exist"})
+        }
+    } catch(error){
+        res.json(error)
+    }
+})
+
+//logout
+router.get("/auth/logout", (req, res) => {
+    //remove the userId property
+    req.session.userId = null
+    //redirect to main page
+    res.redirect("/")
+})
+
+
+
 
 
 
