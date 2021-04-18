@@ -1,1 +1,27 @@
-<h1>Wishlist Index</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- THE HEAD TAG PARTIAL -->
+  <%- include("../partials/head") %>
+
+  <body>
+    <main>
+        <!-- *********DISPLAY ALL WISHLISTS********* -->
+        <h1 class="title">Wishlists</h1>
+        <a href="/auth/logout"><button class="button">Logout</button></a>
+        <% for (let i = 0; i < users.length; i++) { %>
+            <h2 class="subtitle is-3"><%=users[i].username%>'s Wishlists:</h2>
+            <ul>
+                <% for (let j = 0; j < users[i].wishlist.length; j++) { %>
+                    <li><%= users[i].wishlist[j].name %></li>
+                <% } %>
+            </ul>
+        <% } %>
+
+      <!-- **********NEW GOALS FORM**************** -->
+      <!-- <form action="/goals" method="post">
+        <input type="text" placeholder="new goal" name="text" />
+        <input type="submit" value="add goal" />
+      </form> -->
+    </main>
+  </body>
+</html>

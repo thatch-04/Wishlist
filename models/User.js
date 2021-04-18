@@ -1,16 +1,20 @@
 //import model and schema
 const {Schema, model} = require("../db/connection")
 
-//The Wishlist Schema
-const Wishlist = new Schema ({
-    list: [String]
+//The Items Schema
+const Wishlists = new Schema ({
+    name: String,
+    items: [{
+        item: String,
+        isPurchased: {type: Boolean, default: false}
+    }]
 })
 
 //The User Schema
 const UserSchema = new Schema({
     username: {type: String, unique: true, required: true},
     password: {type: String, required: true},
-    wishlist: [Wishlist]
+    wishlist: [Wishlists]
 })
 
 //Create the user model

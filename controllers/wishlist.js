@@ -1,14 +1,14 @@
 // Import Wishlist Model
 const { findByIdAndUpdate } = require("../models/User")
-const Wishlist = require("../models/User")
+const User = require("../models/User")
 
 //Controller Functions
 
 //Index - creates page of all wishlists
 const index = async (req, res) => {
-    const Wishlists = await Wishlist.find({})
+    const Users = await User.find({})
     res.render("wishlist/wishlist-index", {
-        wishlists: Wishlists
+        users: Users
     })
 }
 
