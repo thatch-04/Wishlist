@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs")
 const User = require("../models/User")
 const WishlistController = require("../controllers/wishlist")
 
+
 ///////////////////////////////
 // Custom Middleware Functions
 ////////////////////////////////
@@ -84,7 +85,7 @@ router.post("/auth/login", async (req, res) => {
             console.log(result)
             if (result){
                 req.session.userId = user._id
-                res.redirect("/")
+                res.redirect("/wishlist/wishlist-index")
             } else {
                 res.json({error: "User Doesn't Exist"})
             }
@@ -104,26 +105,30 @@ router.get("/auth/logout", (req, res) => {
     res.redirect("/")
 })
 
+
 //Index route for wishlist
 router.get("/wishlist/wishlist-index", isAuthorized, WishlistController.index)
 
-//New route to create new wishlists
+// //New route to create new wishlists
 router.get("/wishlist/wishlist-index/new", isAuthorized, WishlistController.new)
 
-//Destroy route to delete wishlists
+// //Destroy route to delete wishlists
 router.delete("/wishlist/wishlist-index/:id", isAuthorized, WishlistController.destroy)
 
-//Update
+// //Update
 router.put("/wishlist/wishlist-index/:id", isAuthorized, WishlistController.update)
 
 //Create route to create new wishlist
 router.post("/wishlist/wishlist-index", isAuthorized, WishlistController.create)
 
-//Edit route to edit wishlists
+// //Edit route to edit wishlists
 router.get("/wishlist/wishlist-index/:id/edit", isAuthorized, WishlistController.edit)
 
-//Show route to show a selected wishlist
+// //Show route to show a selected wishlist
 router.get("/wishlist/wishlist-index/:id", isAuthorized, WishlistController.show)
+
+
+
 
 ///////////////////////////////
 // Export Router

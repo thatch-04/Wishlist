@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <!-- THE HEAD TAG PARTIAL -->
+  <%- include("../partials/head") %>
+    <body>
+        <h1>Add New Item</h1>
+        <form action="/wishlist/wishlist-index" method="POST">
+            Item: <input type="text" placeholder = "new item" name="item" /><br/>
+            <input type="submit" name="" value="Add To Wishlist"/>
+        </form>
+    </body>
+</html>

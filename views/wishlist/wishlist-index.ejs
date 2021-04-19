@@ -4,24 +4,19 @@
   <%- include("../partials/head") %>
 
   <body>
+      <!-- THE NAV TAG PARTIAL -->
+      <%- include("../partials/nav") %>
     <main>
-        <!-- *********DISPLAY ALL WISHLISTS********* -->
-        <h1 class="title">Wishlists</h1>
-        <a href="/auth/logout"><button class="button">Logout</button></a>
-        <% for (let i = 0; i < users.length; i++) { %>
-            <h2 class="subtitle is-3"><%=users[i].username%>'s Wishlists:</h2>
+        <!-- *********DISPLAY ALL ITEMS ON WISHLISTS********* -->
+        
+        <h1 class="subtitle is-3"><%=user.username %>'s Wishlist:</h1>
             <ul>
-                <% for (let j = 0; j < users[i].wishlist.length; j++) { %>
-                    <li><%= users[i].wishlist[j].name %></li>
+                <% for (item of user.wishlist) { %>
+                    <li><a href="/wishlist/wishlist-index/<%=item._id%>"><%= item.item %></li></a>
                 <% } %>
             </ul>
-        <% } %>
-
-      <!-- **********NEW GOALS FORM**************** -->
-      <!-- <form action="/goals" method="post">
-        <input type="text" placeholder="new goal" name="text" />
-        <input type="submit" value="add goal" />
-      </form> -->
+        <br>
+        <a href="/wishlist/wishlist-index/new"><button class="button is-primary">Add New Item</button></a>
     </main>
   </body>
 </html>

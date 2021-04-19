@@ -3,11 +3,7 @@ const {Schema, model} = require("../db/connection")
 
 //The Items Schema
 const Wishlists = new Schema ({
-    name: String,
-    items: [{
-        item: String,
-        isPurchased: {type: Boolean, default: false}
-    }]
+    item: String,
 })
 
 //The User Schema
