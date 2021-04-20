@@ -3,10 +3,12 @@
   <!-- THE HEAD TAG PARTIAL -->
   <%- include("../partials/head") %>
     <body>
-        <h1>Add New Item</h1>
+        <h1 class="subtitle is-3">Add New Item</h1>
+        <p>Input a new item to be added to your wishlist!</p>
+        <br/>
         <form action="/wishlist/wishlist-index" method="POST">
             Item: <input type="text" placeholder = "new item" name="item" /><br/>
-            <input type="submit" name="" value="Add To Wishlist"/>
+            <input class="button is-primary" type="submit" name="" value="Add To Wishlist"/>
         </form>
     </body>
 </html>

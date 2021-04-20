@@ -10,7 +10,7 @@
       <!-- *********DISPLAY ALL WISHLISTS********* -->
       <article class="message is-primary is-medium">
         <div class="message-header">
-          Item:
+          Edit or Delete Item:
           <form action="/wishlist/wishlist-index/<%=wishlist._id%>?_method=DELETE" method="post">
             <button class="delete is-large" type="submit"></button>
           </form>
@@ -27,8 +27,8 @@
         <input type="text" value="<%=wishlist.item %>" name="text" />
         <br/>
         <br/>
-        <input class="button" type="submit" value="Edit Item" />
-        <a class="button" href="/wishlist/wishlist-index">
+        <input class="button is-primary" type="submit" value="Edit Item" />
+        <a class="button is-danger is-outlined" href="/wishlist/wishlist-index">
           Back
         </a>
       </form>
