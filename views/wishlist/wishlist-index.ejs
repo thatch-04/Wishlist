@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-navbar-fixed-top">
   <!-- THE HEAD TAG PARTIAL -->
   <%- include("../partials/head") %>
 
@@ -12,7 +12,7 @@
         <h1 class="subtitle is-3"><%=user.username %>'s Wishlist:</h1>
             <ul>
                 <% for (item of user.wishlist) { %>
-                    <li><a href="/wishlist/wishlist-index/<%=item._id%>"><%= item.item %></li></a>
+                    <li class="subtitle is-5"><a href="/wishlist/wishlist-index/<%=item._id%>"><%= item.item %></li></a>
                 <% } %>
             </ul>
         <br>

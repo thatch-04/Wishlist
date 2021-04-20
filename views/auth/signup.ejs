@@ -5,11 +5,17 @@
 
   <body>
     <main>
-      <h1>User Signup</h1>
-      <form action="/auth/signup" method="post">
+      <h1 class="title is-3" id="head-title">User Signup</h1>
+      <form class="box" action="/auth/signup" method="post">
         <input type="text" placeholder="username" name="username" />
+        <br/>
         <input type="password" placeholder="password" name="password" />
-        <input type="submit" value="sign up" />
+        <br/>
+        <br/>
+        <input class="button" type="submit" value="sign up" />
+        <a href="/" class="button">
+          Back
+        </a>
       </form>
     </main>
   </body>

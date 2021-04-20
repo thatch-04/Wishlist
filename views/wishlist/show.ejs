@@ -1,24 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-navbar-fixed-top">
   <!-- THE HEAD TAG PARTIAL -->
   <%- include("../partials/head") %>
 
   <body>
+    <!-- THE HEAD TAG PARTIAL -->
+    <%- include("../partials/nav") %>
     <main>
-        <!-- *********DISPLAY ALL WISHLISTS********* -->
-        <h1 class="title">Wishlists</h1>
-        <a href="/auth/logout"><button class="button">Logout</button></a>
-        <h2><%= wishlist.item %></h2>
+      <!-- *********DISPLAY ALL WISHLISTS********* -->
+      <article class="message is-primary is-medium">
+        <div class="message-header">
+          Item:
+          <form action="/wishlist/wishlist-index/<%=wishlist._id%>?_method=DELETE" method="post">
+            <button class="delete is-large" type="submit"></button>
+          </form>
+        </div>
+        <div class="message-body">
+          <%= wishlist.item %>
+        </div>
+      </article>
+      <br/>
+
 
       <!-- **********EDIT ITEM FORM**************** -->
       <form action="/wishlist/wishlist-index/<%=wishlist._id%>?_method=PUT" method="post">
         <input type="text" value="<%=wishlist.item %>" name="text" />
-        <input type="submit" value="Edit Item" />
+        <br/>
+        <br/>
+        <input class="button" type="submit" value="Edit Item" />
+        <a class="button" href="/wishlist/wishlist-index">
+          Back
+        </a>
       </form>
-      <form action="/wishlist/wishlist-index/<%=wishlist._id%>?_method=DELETE" method="post">
-        <!-- <input type="submit" value="Delete Item" /> -->
-        <button class="delete" type="submit"></button>
-      </form>
+
+
     </main>
   </body>
 </html>
